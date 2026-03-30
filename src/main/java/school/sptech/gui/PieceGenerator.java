@@ -6,7 +6,7 @@ import java.awt.*;
 import java.util.Map;
 
 public class PieceGenerator {
-    public void renderPiece(Graphics g, PieceType pieceType, Integer x0, Integer y0) {
+    public void renderPiece(Graphics g, PieceType pieceType, Integer [] coordsXY) {
         Map<PieceType, PieceRenderingStrategy> pieceMap = Map.of(
                 PieceType.PAWN, new PawnRenderingStrategy(),
                 PieceType.ROOK, new RookRenderingStrategy(),
@@ -17,6 +17,6 @@ public class PieceGenerator {
         );
 
         PieceRenderingStrategy renderingStrategy = pieceMap.get(pieceType);
-        renderingStrategy.render(g, x0, y0);
+        renderingStrategy.render(g, coordsXY[0], coordsXY[1]);
     }
 }
