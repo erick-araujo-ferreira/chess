@@ -1,13 +1,9 @@
 package school.sptech;
-import school.sptech.game.GameStarter;
-import school.sptech.gui.WindowGenerator;
-
-import java.io.*;
-import javax.swing.*;
+import school.sptech.game.GameApp;
 
 public class Main {
     public static void main(String[] args) {
-        GameStarter gameStarter = new GameStarter();
+        GameApp gameStarter = new GameApp();
         gameStarter.start();
     }
 }

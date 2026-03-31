@@ -7,7 +7,6 @@ public class PawnRenderingStrategy implements PieceRenderingStrategy {
     public void render(Graphics g, Integer x0, Integer y0) {
         int[] x = {x0 + 40, x0 + 20, x0 + 60};
         int[] y = {y0 + 20, y0 + 60, y0 + 60};
-        g.setColor(Color.BLUE);
         g.fillPolygon(x, y, 3);
         System.out.println(g + " " + x0 + " " + y0);
     }

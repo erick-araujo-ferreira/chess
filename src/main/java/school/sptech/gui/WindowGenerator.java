@@ -2,10 +2,10 @@ package school.sptech.gui;
 
 import javax.swing.*;
 
-public class WindowGenerator {
+import static school.sptech.gui.UIConfig.FRAME_HEIGHT;
+import static school.sptech.gui.UIConfig.FRAME_WIDTH;
 
-    private final Integer FRAME_WIDTH = 640;
-    private final Integer FRAME_HEIGHT = 640;
+public class WindowGenerator {
 
     public void renderWindow(JFrame frame) {
         frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
