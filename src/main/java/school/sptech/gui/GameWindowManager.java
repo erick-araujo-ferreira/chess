@@ -18,6 +18,7 @@ public class GameWindowManager {
     }
 
     public void updateWindow() {
+        boardManager.movePiece("d1", "e4");
         boardGenerator.repaint();
     }
 }

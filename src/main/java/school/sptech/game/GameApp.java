@@ -6,5 +6,6 @@ public class GameApp {
     GameWindowManager windowManager = new GameWindowManager();
     public void start() {
         windowManager.startWindow();
+        windowManager.updateWindow();
     }
 }

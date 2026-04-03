@@ -18,7 +18,6 @@ public class PieceGenerator {
     public void renderPiece(Graphics g, PieceType pieceType, Integer [] coordsXY, Boolean isWhite) {
         if (isWhite) g.setColor(Color.BLUE);
         else g.setColor(Color.RED);
-        if (pieceType == PieceType.PAWN) System.out.println("PEAO: " + isWhite + " Vai ser pintado de " + g.getColor());
         PieceRenderingStrategy renderingStrategy = pieceMap.get(pieceType);
         renderingStrategy.render(g, coordsXY[0], coordsXY[1]);
     }
