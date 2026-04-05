@@ -1,7 +1,6 @@
 package school.sptech.game;
 
-import school.sptech.gui.BoardCoordinatesMapper;
-import school.sptech.gui.PieceType;
+import school.sptech.gui.GameWindowManager;
 
 import java.util.Arrays;
 
@@ -11,11 +10,10 @@ import static school.sptech.gui.UIConfig.TILE_SIZE;
 
 public class BoardManager {
     private Piece[][] board;
-    private final BoardCoordinatesMapper coordinates;
+    private GameWindowManager windowManager;
 
     public BoardManager() {
         this.board = new Piece[8][8];
-        coordinates = BoardCoordinatesMapper.getInstance();
         startBoard();
     }
 
@@ -60,19 +58,13 @@ public class BoardManager {
         else createRow(pawnPieces, 1);
     }
 
-    public void movePiece(String from, String to) {
-        Integer[] pieceXY = Arrays.copyOf(coordinates.getCoord(from), 2);
-        if (pieceXY[0] != 0) {
-            pieceXY[0] /= TILE_SIZE;
-        }
-        if (pieceXY[1] != 0) {
-            pieceXY[1] /= TILE_SIZE;
-        }
+    public void movePiece(Integer[] fromRowCol, Integer[] toRowCol) {
+        Piece pieceToMove = board[fromRowCol[0]][fromRowCol[1]];
 
-        board[pieceXY[1]][pieceXY[0]] = null;
+    }
 
-        System.out.println(Arrays.toString(pieceXY));
-        System.out.println(board[pieceXY[1]][pieceXY[0]]);
+    public void update() {
+
     }
 
     public Piece[][] getBoard() {

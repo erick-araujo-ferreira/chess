@@ -14,11 +14,12 @@ import static school.sptech.gui.UIConfig.TILE_SIZE;
 public class BoardGenerator extends JPanel {
     private static final Integer tileSize = TILE_SIZE;
     private final PieceGenerator pieceGenerator = new PieceGenerator();
-    private final BoardCoordinatesMapper coordinates = BoardCoordinatesMapper.getInstance();
     private final Piece[][] board;
+    private final BoardManager boardManager;
 
-    public BoardGenerator(Piece[][] board) {
-        this.board = board;
+    public BoardGenerator(BoardManager boardManager) {
+        this.boardManager = boardManager;
+        this.board = this.boardManager.getBoard();
     }
 
     @Override
@@ -47,16 +48,16 @@ public class BoardGenerator extends JPanel {
 
     private void renderBoard(Graphics g, Piece[][] board) {
         char coordLetter;
+        Piece pieceToRender;
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
-                Piece pieceToRender = board[row][col];
-                coordLetter = (char) (LETTER_ASCII_FIRST_POSITION + col);
+                pieceToRender = board[row][col];
+                Integer[] pieceXY = {col * tileSize, row * tileSize};
                 if (pieceToRender != null)
-                    pieceGenerator.renderPiece(g, pieceToRender.getPieceType(), coordinates.getCoord(String.format("%c%d", coordLetter, row + 1)), pieceToRender.isWhite());
+                    pieceGenerator.renderPiece(g, pieceToRender.getPieceType(), pieceXY, pieceToRender.isWhite());
             }
         }
-        BoardManager bm = new BoardManager();
-        bm.printBoard();
+        boardManager.printBoard();
 
     }
 

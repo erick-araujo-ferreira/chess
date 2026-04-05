@@ -1,9 +1,9 @@
 package school.sptech;
-import school.sptech.game.GameApp;
+import school.sptech.game.MatchManager;
 
 public class Main {
     public static void main(String[] args) {
-        GameApp gameStarter = new GameApp();
+        MatchManager gameStarter = new MatchManager();
         gameStarter.start();
     }
 }
