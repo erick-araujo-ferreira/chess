@@ -39,12 +39,22 @@ public class MatchManager implements MouseTrackerObserver {
 
     @Override
     public void pieceMoved(Integer[] clickedSquare, Integer[] releasedSquare) {
-        PieceMovementStrategy strategy = strategies.get(board[clickedSquare[0]][clickedSquare[1]].getPieceType());
-        if (!Arrays.equals(clickedSquare, releasedSquare)
-            && strategy.isMovementValid(board, clickedSquare, releasedSquare)) {
-            board[releasedSquare[0]][releasedSquare[1]] = board[clickedSquare[0]][clickedSquare[1]];
-            board[clickedSquare[0]][clickedSquare[1]] = null;
+        if (isMovementValid(board, clickedSquare, releasedSquare)) {
+            movePiece(board, clickedSquare, releasedSquare);
             windowManager.updateWindow();
         }
+    }
+
+    private void movePiece(Piece[][] board, Integer[] clickedSquare, Integer[] releasedSquare) {
+        board[releasedSquare[0]][releasedSquare[1]] = board[clickedSquare[0]][clickedSquare[1]];
+        board[clickedSquare[0]][clickedSquare[1]] = null;
+    }
+
+    private Boolean isMovementValid(Piece[][] board, Integer[] clickedSquare, Integer[] releasedSquare) {
+        Piece clickedPiece = board[clickedSquare[0]][clickedSquare[1]];
+        PieceMovementStrategy strategy = strategies.get(clickedPiece.getPieceType());
+
+        return (!Arrays.equals(clickedSquare, releasedSquare)
+                && strategy.isMovementValid(board, clickedSquare, releasedSquare));
     }
 }
