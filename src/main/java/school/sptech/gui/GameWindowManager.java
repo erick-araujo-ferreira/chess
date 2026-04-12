@@ -1,6 +1,7 @@
 package school.sptech.gui;
 
 import school.sptech.game.BoardManager;
+import school.sptech.game.MatchManager;
 
 import javax.swing.*;
 
@@ -10,14 +11,17 @@ public class GameWindowManager {
     private final BoardManager boardManager;
     private final BoardGenerator boardGenerator;
     private final MouseTracker tracker;
+    private final MatchManager currentMatch;
 
-    public GameWindowManager(BoardManager boardManager) {
+    public GameWindowManager(BoardManager boardManager, MatchManager matchManager) {
         this.boardManager = boardManager;
         boardGenerator = new BoardGenerator(this.boardManager);
-        tracker = new MouseTracker(boardManager.getBoard(), this);
+        tracker = new MouseTracker();
+        currentMatch = matchManager;
     }
 
     public void startWindow() {
+        tracker.addObserver(currentMatch);
         windowGenerator.renderWindow(frame);
         boardGenerator.addMouseListener(tracker);
         frame.add(boardGenerator);

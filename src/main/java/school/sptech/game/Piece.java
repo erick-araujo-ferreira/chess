@@ -5,6 +5,7 @@ import school.sptech.gui.PieceType;
 public class Piece {
     private PieceType pieceType;
     private boolean isWhite;
+    private boolean wasMoved = false;
 
     public Piece() {
     }
@@ -30,11 +31,20 @@ public class Piece {
         this.pieceType = pieceType;
     }
 
+    public boolean wasMoved() {
+        return wasMoved;
+    }
+
+    public void setWasMoved(boolean wasMoved) {
+        this.wasMoved = wasMoved;
+    }
+
     @Override
     public String toString() {
         return "Piece{" +
                 "pieceType=" + pieceType +
                 ", isWhite=" + isWhite +
+                ", wasMoved=" + wasMoved +
                 '}';
     }
 }
