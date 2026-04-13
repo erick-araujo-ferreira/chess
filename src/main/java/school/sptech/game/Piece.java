@@ -6,6 +6,7 @@ public class Piece {
     private PieceType pieceType;
     private boolean isWhite;
     private boolean wasMoved = false;
+    private boolean isEnPassantVulnerable = false;
 
     public Piece() {
     }
@@ -37,6 +38,14 @@ public class Piece {
 
     public void setWasMoved(boolean wasMoved) {
         this.wasMoved = wasMoved;
+    }
+
+    public boolean isEnPassantVulnerable() {
+        return isEnPassantVulnerable;
+    }
+
+    public void setEnPassantVulnerable(boolean enPassantVulnerable) {
+        isEnPassantVulnerable = enPassantVulnerable;
     }
 
     @Override
